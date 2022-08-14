@@ -17,19 +17,42 @@ class Node {
 };
 */
 
+// class Solution {
+//     public List<Integer> preorder(Node root) {
+//        if(root==null) return list;
+//         pre(root);
+//         return list;
+       
+//     }
+//      List<Integer> list = new ArrayList<>();
+//     void pre(Node root){
+//         if(root==null) return;
+//         list.add(root.val);
+//         for(Node child:root.children){
+//             pre(child);
+//         }
+//     }
+// }
+
 class Solution {
     public List<Integer> preorder(Node root) {
-       if(root==null) return list;
-        pre(root);
+        
+        List<Integer> list = new ArrayList<>();
+        if(root==null) return list;
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        
+        while(!stack.isEmpty()){
+            Node n = stack.pop();
+            list.add(n.val);
+            
+            for(int i=n.children.size()-1; i>=0; i--){
+                stack.push(n.children.get(i));
+            }
+            
+        }
         return list;
        
     }
-     List<Integer> list = new ArrayList<>();
-    void pre(Node root){
-        if(root==null) return;
-        list.add(root.val);
-        for(Node child:root.children){
-            pre(child);
-        }
-    }
+   
 }
