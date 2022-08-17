@@ -6,8 +6,8 @@ class Solution {
         
         int color = image[sr][sc];
         if(color==newcolor) return image;
-        floodFillrec(image, sr, sc, n , m, color, newcolor);
-        return image;
+       return  floodFillrec(image, sr, sc, n , m, color, newcolor);
+        // return image;
         
     }
     boolean isvalid(int[][] image, int i, int j, int n , int m, int color){
@@ -15,7 +15,7 @@ class Solution {
         return false;
     }
     
-    void floodFillrec(int[][] image, int i, int j, int n , int m, int color, int newcolor){
+    int[][] floodFillrec(int[][] image, int i, int j, int n , int m, int color, int newcolor){
       image[i][j]=newcolor;
         
         if(isvalid(image, i+1, j, n, m, color)){
@@ -30,5 +30,6 @@ class Solution {
          if(isvalid(image, i, j-1, n, m, color)){
             floodFillrec(image, i, j-1, n, m, color, newcolor);
         }
+        return image;
     }
 }
