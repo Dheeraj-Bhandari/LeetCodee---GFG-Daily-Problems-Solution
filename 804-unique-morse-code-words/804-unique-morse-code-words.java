@@ -10,6 +10,7 @@ class Solution {
             }
             set.add(sb.toString());
         }
+        System.out.println(str.length);
         return set.size();
     }
 }
