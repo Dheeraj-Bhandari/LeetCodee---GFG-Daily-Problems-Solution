@@ -1,20 +1,15 @@
 class Solution {
     public int fib(int n) {
-        return func(n, new int[n+1]);
+        int[] dp = new int[n+1];
+        return fib2(n, dp);
     }
-    
-    int  func(int n , int[] dp){
-    if(n==0 || n==1 ) return n;
+    int fib2(int n, int[]dp){
+        if(n<0 || n==0) return 0;
+        if(n==1) return 1;
+        if(dp[n]!=0) return dp[n];
         
-    if(dp[n]!=0) return dp[n];
-        
-    int first = func(n-1,dp);     
-    int sec = func(n-2 , dp);
-        int ans = first+sec;
-        
-        dp[n] = ans;
+        int ans = fib2(n-1, dp)+fib2(n-2, dp);
+        dp[n]= ans;
         return ans;
-
-
-}
+    }
 }
