@@ -14,21 +14,8 @@ class Solution {
             else{
                 int a = Character.getNumericValue(ch);
                 frq[a]++;
-                // if(frq[a]==0){
-                //     frq[a]= a;
-                // }
-                // else{
-                //     frq[a]++;
-                // }
-                
                 int b  = Character.getNumericValue(ch2);
-                frq2[b]++;
-                //  if(frq2[b]==0){
-                //     frq2[b]= b;
-                // }
-                // else{
-                //     frq2[b]++;
-                // }
+                frq2[b]++; 
                 
             }
             
