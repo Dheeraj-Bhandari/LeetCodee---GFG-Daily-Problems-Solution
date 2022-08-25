@@ -16,18 +16,17 @@
 class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
        
-        return sort(nums, 0, nums.length-1);
-      
+       TreeNode Node = sort(nums, 0, nums.length-1);
+        return Node;
         
     }
     TreeNode sort(int[] nums, int s, int e ){
         if(s>e) return null;
         int mid = (s+e)/2;
-       
-        TreeNode node = new TreeNode(nums[mid]);
-        node.left= sort(nums, s, mid-1);
-        node.right = sort(nums, mid+1, e);
-       
+        int data = nums[mid];
+        TreeNode left = sort(nums, s, mid-1);
+        TreeNode right = sort(nums, mid+1, e);
+        TreeNode node = new TreeNode(nums[mid], left, right);
         return node;
     }
 }
