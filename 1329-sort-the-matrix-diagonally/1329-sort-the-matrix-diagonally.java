@@ -13,7 +13,7 @@ class Solution {
         return mat;
     }
     
-    void sortmatrix(int[][] mat, int r, int c){
+    int[][] sortmatrix(int[][] mat, int r, int c){
         int m = mat.length;
         int n = mat[0].length;
         
@@ -40,6 +40,6 @@ class Solution {
                 j++;
             }
         }
-        // return mat;
+        return mat;
     }
 }
