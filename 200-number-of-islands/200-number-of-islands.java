@@ -20,7 +20,7 @@ class Solution {
         
         grid[i][j] ='0';
         
-        check(grid, i-1, j,m,n);
+         check(grid, i-1, j,m,n);
         check(grid, i+1, j, m,n);
         check(grid, i, j-1 ,m ,n);
         check(grid, i, j+1, m, n);
