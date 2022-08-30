@@ -32,32 +32,60 @@ class Solution {
 //         }
 //         return new ArrayList(set);
         
-         // Using two pointer
+         // Using two pointer with set
         
-        Arrays.sort(nums);
-        Set<List<Integer>> set  = new HashSet<>();
-        for(int i=0; i<nums.length-2; i++){
-            int j=i+1;
-            int k = nums.length-1;
+//         Arrays.sort(nums);
+//         Set<List<Integer>> set  = new HashSet<>();
+//         for(int i=0; i<nums.length-2; i++){
+//             int j=i+1;
+//             int k = nums.length-1;
             
-            while(j<k){
-                if(nums[j]+nums[k]+nums[i]==0){
+//             while(j<k){
+//                 if(nums[j]+nums[k]+nums[i]==0){
+//                     List<Integer>  list = new ArrayList<>();
+//                     list.add(nums[i]);
+//                     list.add(nums[j]);
+//                     list.add(nums[k]);
+//                     set.add(list);
+//                     j++;
+//                     k--;
+//                 }
+//                 else if(nums[j]+nums[k]+nums[i]>0){
+//                     k--;
+//                 }
+//                 else j++;
+//             }
+            
+//         }
+//         return new ArrayList(set);
+        
+        //using two pointer without set
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        for(int i=0; i<nums.length-2; i++){
+            if(i==0 || i>0 && nums[i]!=nums[i-1]){
+                int j=i+1;
+                int k = nums.length-1;
+                
+                while(j<k){
+                    int tgt = nums[i]+nums[j]+nums[k];
+                    if(tgt==0){
                     List<Integer>  list = new ArrayList<>();
                     list.add(nums[i]);
                     list.add(nums[j]);
                     list.add(nums[k]);
-                    set.add(list);
-                    j++;
-                    k--;
+                    ans.add(list);
+                   while(j<k && nums[j]==nums[j+1])j++;
+                    while(j<k && nums[k]==nums[k-1])k--;
+                        j++;
+                        k--;
+                    }
+                    else if(tgt>0) k--;
+                    else j++;
                 }
-                else if(nums[j]+nums[k]+nums[i]>0){
-                    k--;
-                }
-                else j++;
             }
-            
         }
-        return new ArrayList(set);
-        
+            return ans;
     }
 }
