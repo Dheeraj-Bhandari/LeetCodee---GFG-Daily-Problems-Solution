@@ -1,32 +1,63 @@
 class Solution {
-    List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> threeSum(int[] nums) {
+        
+    // Using HashMap but giving TLE
+//         Arrays.sort(nums);
+//         HashMap<Integer, Integer> map = new HashMap<>();
+//         List<Integer> list = new ArrayList<>();
+//         Set<List<Integer>> set  = new HashSet<>();
+        
+//         for(int i=0; i<nums.length; i++){
+//             map.put(nums[i], map.getOrDefault(nums[i], 0)+1);
+//         }
+        
+//         for(int i=0; i<nums.length-2; i++){
+//             map.put(nums[i], map.get(nums[i])-1);
+//             for(int j =i+1; j<nums.length-1; j++){
+//                 map.put(nums[j], map.get(nums[j])-1);
+//                 int value = -(nums[i]+nums[j]);
+//                 if(map.containsKey(value)){
+//                     if(map.get(value)>0){
+//                         list.add(value);
+//                         list.add(nums[i]);
+//                         list.add(nums[j]);
+//                         Collections.sort(list);
+//                         set.add(list);
+//                         list = new ArrayList();
+//                     }
+//                 }
+//                 map.put(nums[j], map.get(nums[j])+1);
+//             }
+//             map.put(nums[i], map.get(nums[i])+1);
+//         }
+//         return new ArrayList(set);
+        
+         // Using two pointer
+        
         Arrays.sort(nums);
-        for(int i=0; i<nums.length; i++){
-           if(i==0 || nums[i]!=nums[i-1]){
-                towpointer(nums,0-nums[i], i+1, nums.length-1 );
-           }
-           
+        Set<List<Integer>> set  = new HashSet<>();
+        for(int i=0; i<nums.length-2; i++){
+            int j=i+1;
+            int k = nums.length-1;
+            
+            while(j<k){
+                if(nums[j]+nums[k]+nums[i]==0){
+                    List<Integer>  list = new ArrayList<>();
+                    list.add(nums[i]);
+                    list.add(nums[j]);
+                    list.add(nums[k]);
+                    set.add(list);
+                    j++;
+                    k--;
+                }
+                else if(nums[j]+nums[k]+nums[i]>0){
+                    k--;
+                }
+                else j++;
+            }
+            
         }
-        return ans;
+        return new ArrayList(set);
         
     }
-    
-    void towpointer(int[] arr, int target, int s , int e){
-        int temp = s-1;
-        while(s<e){
-            if(arr[s]+arr[e]>target) e--;
-            else if(arr[s]+arr[e]<target) s++;
-            else{
-                List<Integer> list = new ArrayList<>();
-                list.add(arr[temp]); list.add(arr[s]);list.add(arr[e]);
-                ans.add(list);
-                while(s<e &&  arr[s]==arr[s+1])s++;
-                while(s<e &&  arr[e]==arr[e-1])e--;
-                s++;
-                e--;
-            }
-        }
-    }
-       
 }
