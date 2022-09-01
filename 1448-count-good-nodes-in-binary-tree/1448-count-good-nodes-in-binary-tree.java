@@ -24,7 +24,7 @@ class Solution {
         
         if(root.val>=max){
             ans++;
-            max = Math.max(root.val, max);
+            max = root.val;
         }
         
         countGN(root.left, max);
