@@ -49,8 +49,7 @@ class Solution {
                 node= stack.pop();
                 list.add(node.val);
                 node = node.right;
-                
-               
+
             }
             
         }
