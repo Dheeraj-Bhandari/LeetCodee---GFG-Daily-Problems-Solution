@@ -5,6 +5,7 @@ class Solution {
         int maxScore = 0;
         int i =0;
         int j = tokens.length-1;
+        
         while(i<=j){
            
              if(tokens[i]<=power){
