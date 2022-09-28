@@ -10,30 +10,35 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-    //Base case;
+       
         
-      if(head.next==null){
-                 head= null;
+        
+        int size = 0;
+        ListNode node = head;
+        while(node!=null){
+           
+            node = node.next;
+             size++;
+        }
+                                                            
+                                                            
+        //base case
+        if(n==size){
+           return head.next;
+        }
+
+        System.out.println(size);
+        node = head;
+        int target = size-n-1;
+        System.out.println(target);
+        while(target-->0){
+            if(n==1 && node.next.next==null){
+                node.next=null;
                 return head;
             }
-        
-        // Finding Size of LL
-        int size = 1;
-        ListNode node = head;
-        
-        while(node.next!=null){
-            node= node.next;
-            size++;
-        }
-        
-         int remove = size-n;
-        node= head;
-        if(remove==0) return head.next;
-        for(int i=1; i<remove; i++){
             node = node.next;
         }
-        node.next=node.next.next;
+        node.next = node.next.next;
         return head;
-     
     }
 }
