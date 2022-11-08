@@ -4,10 +4,10 @@ class Solution {
         StringBuilder sb = new StringBuilder(s);
         
         for(int i =0; i<sb.length()-1; i++){
-                char ch = sb.charAt(i);
-                char ch2 = sb.charAt(i+1);
+                int ch =  (int) sb.charAt(i);
+                int ch2 = (int)  sb.charAt(i+1);
             
-            if(Math.abs((int)ch - (int)ch2)==32){
+            if(Math.abs(ch - ch2)==32){
                 sb.deleteCharAt(i);
                 sb.deleteCharAt(i);
                 
