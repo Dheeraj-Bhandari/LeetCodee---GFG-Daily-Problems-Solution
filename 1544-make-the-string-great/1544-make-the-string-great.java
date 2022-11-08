@@ -4,10 +4,12 @@ class Solution {
         
         for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
-            if(!stack.isEmpty() && Character.isUpperCase(ch) && Character.isLowerCase(stack.peek()) && Character.toLowerCase(ch)==(stack.peek())){
+            if(!stack.isEmpty() && Character.isUpperCase(ch) && Character.isLowerCase(stack.peek())
+               && Character.toLowerCase(ch)==(stack.peek())){
                 stack.pop();
             }
-            else if(!stack.isEmpty() && Character.isLowerCase(ch) && Character.isUpperCase(stack.peek())  && Character.toLowerCase(stack.peek())==(ch)){
+            else if(!stack.isEmpty() && Character.isLowerCase(ch) && Character.isUpperCase(stack.peek())
+                    && Character.toLowerCase(stack.peek())==(ch)){
                 stack.pop();
             }
             else stack.push(ch);
