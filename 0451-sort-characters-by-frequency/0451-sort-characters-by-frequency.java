@@ -9,8 +9,8 @@ class Solution {
         for(int i=0; i<s.length(); i++){
             map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0)+1);
         }
-        System.out.println(map);
-        String ans ="";
+       
+        StringBuilder sb = new StringBuilder();
         
         List<Character>[] list = new List[s.length()+1];
         
@@ -24,21 +24,19 @@ class Solution {
             list[frq].add(ch);
   
         }
-       for(List<Character>c:list){
-           System.out.println(c);
-       }
+    
         for(int i =list.length-1; i>=0;  i-- ){
             if(list[i]!=null){
              
                 for(char ch : list[i]){
                     for(int j=0; j<map.get(ch); j++){
-                        ans+=ch;
+                        sb.append(ch);
                     }
                 }
             }
         }
         
-        return ans;
+        return sb.toString();
         
     }
 }
