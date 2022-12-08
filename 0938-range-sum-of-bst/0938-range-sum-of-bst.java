@@ -31,10 +31,10 @@ class Solution {
         
         if(root.val<=high && root.val>=low){
             ans = ans + root.val;
-            System.out.println(root.val);
+            // System.out.println(root.val);
         }
-        checkdfs(root.left, high, low);
-        checkdfs(root.right, high, low);
+        if(root.val > low)checkdfs(root.left, high, low);
+       if(root.val < high) checkdfs(root.right, high, low);
         // return ans;
     }
 }
