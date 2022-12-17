@@ -27,7 +27,7 @@ class Solution {
                 
             }
             else{
-                ;
+                
                 int value= Integer.parseInt(s);
                 stack.push(value);
                 
