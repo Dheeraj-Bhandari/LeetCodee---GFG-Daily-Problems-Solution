@@ -40,17 +40,11 @@ class Solution {
         // Code here
       Arrays.sort(arr);
       
-      int ans =0;
+      long ans =0;
       
       for(int i=0; i<N-1; i++){
-            // if(arr[i]==arr[i+1]){
-            //     arr[i+1]=arr[i+1]+1;
-            //     ans++;
-            // }
             if(arr[i]>=arr[i+1]){
-                
                 while(arr[i]>=arr[i+1]){
-                 
                     arr[i+1] = arr[i+1]+1;
                     ans++;
                 }
