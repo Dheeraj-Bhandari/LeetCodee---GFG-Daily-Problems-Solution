@@ -109,32 +109,39 @@ class Solution {
     //Function to find first node if the linked list has a loop.
     public static int findFirstNode(Node head){
         //code here
-        Set<Node> set = new HashSet<>();
-        Node temp = head;
-        while(temp!=null){
-            if(set.contains(temp))return temp.data;
-            set.add(temp);
-            temp =temp.next;
+        // with On time and On space
+        // Set<Node> set = new HashSet<>();
+        // Node temp = head;
+        // while(temp!=null){
+        //     if(set.contains(temp))return temp.data;
+        //     set.add(temp);
+        //     temp =temp.next;
+            
+            
+        // }
+        // return -1;
+        
+        
+        // only On time and o1 space
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast= fast.next.next;
+            if(fast==slow){
+                fast = head;
+                while(slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                    
+                }
+                return fast.data;
+            }
             
             
         }
         return -1;
         
-        // Node slow = head;
-        // Node fast = head;
-        // while(fast!=null && fast.next!=null){
-        //     if(fast==slow)break;
-        //     slow = slow.next;
-        //     fast= fast.next.next;
-            
-        // }
-        // slow = head;
-        // while(fast!=slow){
-            
-        //     slow = slow.next;
-        //     fast= fast.next;
-        // }
-        // return fast.next.data;
         
     }
 }
