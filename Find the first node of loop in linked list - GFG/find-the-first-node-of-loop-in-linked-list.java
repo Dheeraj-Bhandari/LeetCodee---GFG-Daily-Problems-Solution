@@ -135,7 +135,7 @@ class Solution {
                     fast=fast.next;
                     
                 }
-                return fast.data;
+                return slow.data;
             }
             
             
